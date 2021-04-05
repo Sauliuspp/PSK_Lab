@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Oro uostai ir jų lėktuvai</title>
+</head>
+<h:body>
+    <h2 align="Center">Oro uostai ir jų lėktuvai</h2>
+    <ol>
+        <ui:repeat value="#{airports.allAirports}" var="airport">
+            <li>
+                <h:link value="#{airport.name}, #{airport.airportAddress}"
+                        outcome="airportdetails?airportId=#{airport.id}"/>
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h3>Pridėti oro uostą</h3>
+        <p>Oro uosto pavadinimas</p>
+        <h:inputText value="#{airports.airportToCreate.name}" required="true" />
+        <p>Oro uosto adresas</p>
+        <h:inputText value="#{airports.airportToCreate.airportAddress}" required="true" />
+        <h:commandButton value="Pridėti naują lėktuvą" action="#{airports.createAirport}" />
+    </h:form>
+    <table align="center"
+           cellpadding="50">
+        <tr>
+            <td>
+                <h:link outcome="index" value="Grįžti į pagrindinį puslapį"/>
+            </td>
+        </tr>
+    </table>
+</h:body>
+</html>

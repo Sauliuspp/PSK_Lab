@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Lėktuvai ir jų pilotai</title>
+</head>
+<h:body>
+    <h2 align="Center">Lėktuvai ir jų pilotai</h2>
+    <ol>
+        <ui:repeat value="#{planes.allPlanes}" var="plane">
+            <li>
+                <h:link value="#{plane.model}, #{plane.planeNumber}"
+                        outcome="planedetails?planeId=#{plane.id}"/>
+            </li>
+        </ui:repeat>
+    </ol>
+    <table align="center"
+           cellpadding="50">
+        <tr>
+            <td>
+                <h:link outcome="index" value="Grįžti į pagrindinį puslapį"/>
+            </td>
+        </tr>
+    </table>
+</h:body>
+</html>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="H2 - PSK_database" uuid="9473a43f-38cc-4891-92ac-ebea64be1e5b">
+      <driver-ref>h2.unified</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.h2.Driver</jdbc-driver>
+      <jdbc-url>jdbc:h2:~/PSK_database;AUTO_SERVER=TRUE</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+  </component>
+</project>

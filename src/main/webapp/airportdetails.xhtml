@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Oro uosto lėktuvai</title>
+</head>
+<h:body>
+    <param name="airportId" value="#{planesForAirport.airport.id}" />
+    <h2 align="Center">Oro uosto lėktuvai</h2>
+    <ol>
+        <ui:repeat value="#{planesForAirport.airport.planes}" var="plane">
+            <li>
+                #{plane.model}, #{plane.planeNumber}
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h3>Pridėti lėktuvą</h3>
+        <p>Lėktuvo modelis</p>
+        <h:inputText value="#{planesForAirport.planeToCreate.model}" required="true" />
+        <p>Lėktuvo numeris</p>
+        <h:inputText value="#{planesForAirport.planeToCreate.planeNumber}" required="true" />
+        <h:commandButton value="Pridėti naują lėktuvą" action="#{planesForAirport.createPlane}">
+            <f:param name="airportId" value="#{planesForAirport.airport.id}" />
+        </h:commandButton>
+    </h:form>
+    <table align="center"
+           cellpadding="50">
+        <tr>
+            <td>
+                <h:link outcome="airports" value="Grįžti į oro uostų sąrašą"/>
+            </td>
+        </tr>
+    </table>
+</h:body>
+</html>

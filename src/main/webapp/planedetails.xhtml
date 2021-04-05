@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Lėktuvo pilotai</title>
+</head>
+<h:body>
+    <param name="planeId" value="#{pilotsForPlane.plane.id}" />
+    <h2 align="Center">Lėktuvo pilotai</h2>
+    <ol>
+        <ui:repeat value="#{pilotsForPlane.plane.pilots}" var="pilot">
+            <li>
+                #{pilot.name}, #{pilot.age}, #{pilot.personId}
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h3>Priskirti pilotą lėktuvui</h3>
+        <p>Piloto vardas</p>
+        <h:inputText value="#{pilotsForPlane.pilotToCreate.name}" required="true" />
+        <p>Piloto amžius</p>
+        <h:inputText value="#{pilotsForPlane.pilotToCreate.age}" required="true" />
+        <p>Asmens kodas</p>
+        <h:inputText value="#{pilotsForPlane.pilotToCreate.personId}" required="true" />
+        <h:commandButton value="Pridėti pilotą" action="#{pilotsForPlane.createPilot}">
+            <f:param name="planeId" value="#{pilotsForPlane.plane.id}" />
+        </h:commandButton>
+    </h:form>
+    <table align="center"
+           cellpadding="50">
+        <tr>
+            <td>
+                <h:link outcome="planes" value="Grįžti į lėktuvų sąrašą"/>
+            </td>
+        </tr>
+    </table>
+</h:body>
+</html>
