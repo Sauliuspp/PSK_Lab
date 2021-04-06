@@ -19,20 +19,19 @@
             </li>
         </ui:repeat>
     </ol>
+
     <h:form>
-        <h3>Priskirti pilotą lėktuvui</h3>
-        <p>Piloto vardas</p>
-        <h:inputText value="#{pilotsForPlane.pilotToCreate.name}" required="true" />
-        <p>Piloto amžius</p>
-        <h:inputText value="#{pilotsForPlane.pilotToCreate.age}" required="true" />
-        <p>Asmens kodas</p>
-        <h:inputText value="#{pilotsForPlane.pilotToCreate.personId}" required="true" />
-        <h:commandButton value="Pridėti pilotą" action="#{pilotsForPlane.createPilot}">
-            <f:param name="planeId" value="#{pilotsForPlane.plane.id}" />
-        </h:commandButton>
+        <h:selectOneMenu value="#{pilotsForListing.pilots}">
+            <f:selectItems value="#{pilotsForListing.pilots}" />
+        </h:selectOneMenu>
+        <p>
+            <h:commandButton value="Pridėti pilotą" action="#{pilotsForPlane.addPilot(pilotsForListing.pilot)}">
+                <f:param name="planeId" value="#{pilotsForPlane.plane.id}"/>
+            </h:commandButton>
+        </p>
     </h:form>
-    <table align="center"
-           cellpadding="50">
+
+    <table align="center">
         <tr>
             <td>
                 <h:link outcome="planes" value="Grįžti į lėktuvų sąrašą"/>

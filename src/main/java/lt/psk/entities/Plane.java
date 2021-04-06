@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 })
 @Table(name = "PLANE")
 @Getter @Setter
-public class Plane {
+public class Plane implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
@@ -27,7 +28,8 @@ public class Plane {
     @ManyToOne
     private Airport airport;
 
-    @ManyToMany(mappedBy = "planes")
+    @ManyToMany
+    @JoinTable(name = "PLANES_PILOTS")
     private List<Pilot> pilots = new ArrayList<>();
 
     public Plane() { }

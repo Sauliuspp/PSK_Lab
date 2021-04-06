@@ -1,6 +1,7 @@
 package lt.psk.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import lombok.Setter;
 })
 @Table(name = "AIRPORT")
 @Getter @Setter
-public class Airport {
+public class Airport implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;

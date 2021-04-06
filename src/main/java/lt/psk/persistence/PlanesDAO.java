@@ -26,4 +26,8 @@ public class PlanesDAO {
     public Plane findOne(Integer id){
         return em.find(Plane.class, id);
     }
+
+    public void update(Plane plane) {
+        em.merge(plane);
+    }
 }

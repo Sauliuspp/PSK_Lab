@@ -25,10 +25,11 @@
         <h:inputText value="#{airports.airportToCreate.name}" required="true" />
         <p>Oro uosto adresas</p>
         <h:inputText value="#{airports.airportToCreate.airportAddress}" required="true" />
-        <h:commandButton value="Pridėti naują lėktuvą" action="#{airports.createAirport}" />
+        <p>
+            <h:commandButton value="Pridėti naują oro uostą" action="#{airports.createAirport}" />
+        </p>
     </h:form>
-    <table align="center"
-           cellpadding="50">
+    <table align="center">
         <tr>
             <td>
                 <h:link outcome="index" value="Grįžti į pagrindinį puslapį"/>

@@ -3,7 +3,8 @@
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
     <meta charset="UTF-8"/>
     <title>Lėktuvų pilotai</title>
@@ -18,8 +19,19 @@
             </li>
         </ui:repeat>
     </ol>
-    <table align="center"
-           cellpadding="50">
+    <h:form>
+        <h3>Pridėti pilotą</h3>
+        <p>Piloto vardas</p>
+        <h:inputText value="#{pilots.pilotToCreate.name}" required="true" />
+        <p>Piloto amžius</p>
+        <h:inputText value="#{pilots.pilotToCreate.age}" required="true" />
+        <p>Asmens kodas</p>
+        <h:inputText value="#{pilots.pilotToCreate.personId}" required="true" />
+        <p>
+            <h:commandButton value="Pridėti pilotą" action="#{pilots.createPilot}"/>
+        </p>
+    </h:form>
+    <table align="center">
         <tr>
             <td>
                 <h:link outcome="index" value="Grįžti į pagrindinį puslapį"/>

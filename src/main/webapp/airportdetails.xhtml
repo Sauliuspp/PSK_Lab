@@ -24,12 +24,13 @@
         <h:inputText value="#{planesForAirport.planeToCreate.model}" required="true" />
         <p>Lėktuvo numeris</p>
         <h:inputText value="#{planesForAirport.planeToCreate.planeNumber}" required="true" />
-        <h:commandButton value="Pridėti naują lėktuvą" action="#{planesForAirport.createPlane}">
-            <f:param name="airportId" value="#{planesForAirport.airport.id}" />
-        </h:commandButton>
+        <p>
+            <h:commandButton value="Pridėti naują lėktuvą" action="#{planesForAirport.createPlane}">
+                <f:param name="airportId" value="#{planesForAirport.airport.id}" />
+            </h:commandButton>
+        </p>
     </h:form>
-    <table align="center"
-           cellpadding="50">
+    <table align="center">
         <tr>
             <td>
                 <h:link outcome="airports" value="Grįžti į oro uostų sąrašą"/>

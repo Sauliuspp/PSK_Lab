@@ -42,11 +42,10 @@ public class PilotsForPlane {
 
     @Transactional
     @LoggedInvocation
-    public String createPilot() {
-        List<Plane> planes = new ArrayList<>();
-        planes.add(this.plane);
-        pilotToCreate.setPlanes(planes);
-        pilotsDAO.persist(pilotToCreate);
+    public String addPilot(Pilot pilot) {
+        Plane foundPlane = planesDAO.findOne(plane.getId());
+        foundPlane.getPilots().add(pilot);
+        planesDAO.update(foundPlane);
         return "planedetails?faces-redirect=true&planeId=" + this.plane.getId();
     }
 }
