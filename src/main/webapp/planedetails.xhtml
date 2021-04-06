@@ -21,11 +21,14 @@
     </ol>
 
     <h:form>
-        <h:selectOneMenu value="#{pilotsForListing.pilots}">
-            <f:selectItems value="#{pilotsForListing.pilots}" />
+        <h:selectOneMenu value="#{pilotsForPlane.chosenPilotId}">
+            <f:selectItems value="#{pilotsForPlane.getFreePilots()}"
+                           var="pilot"
+                           itemLabel="#{pilot.name}"
+                           itemValue="#{pilot.id}"/>
         </h:selectOneMenu>
         <p>
-            <h:commandButton value="Pridėti pilotą" action="#{pilotsForPlane.addPilot(pilotsForListing.pilot)}">
+            <h:commandButton value="Pridėti pilotą" action="#{pilotsForPlane.assignPilot}">
                 <f:param name="planeId" value="#{pilotsForPlane.plane.id}"/>
             </h:commandButton>
         </p>

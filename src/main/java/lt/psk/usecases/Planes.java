@@ -2,9 +2,7 @@ package lt.psk.usecases;
 
 import lombok.Getter;
 import lombok.Setter;
-import lt.psk.entities.Airport;
 import lt.psk.entities.Plane;
-import lt.psk.persistence.AirportsDAO;
 import lt.psk.persistence.PlanesDAO;
 
 import javax.annotation.PostConstruct;

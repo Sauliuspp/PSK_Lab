@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>Lėktuvų pilotai</title>
+</h:head>
+<h:body>
+    <h2 align="Center">Lėktuvų pilotai</h2>
+    <ol>
+        <ui:repeat value="#{pilotsMyBatis.allPilots}" var="pilot">
+            <li>
+                <h:link value="#{pilot.name}"
+                        outcome="/MyBatis/pilotdetails?personId=#{pilot.id}" />
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h3>Pridėti pilotą</h3>
+        <p>Piloto vardas</p>
+        <h:inputText value="#{pilotsMyBatis.pilotToCreate.name}" required="true" />
+        <p>Piloto amžius</p>
+        <h:inputText value="#{pilotsMyBatis.pilotToCreate.age}" required="true" />
+        <p>Asmens kodas</p>
+        <h:inputText value="#{pilotsMyBatis.pilotToCreate.personId}" required="true" />
+        <p>
+            <h:commandButton value="Pridėti pilotą" action="#{pilotsMyBatis.createPilot}"/>
+        </p>
+    </h:form>
+    <table align="center">
+        <tr>
+            <td>
+                <h:link outcome="/MyBatis/index" value="Grįžti į pagrindinį puslapį"/>
+            </td>
+        </tr>
+    </table>
+</h:body>
+</html>

@@ -6,7 +6,7 @@
     <typeAliases>
         <typeAlias type="lt.psk.mybatis.model.Airport" alias="Airport"/>
         <typeAlias type="lt.psk.mybatis.model.Pilot" alias="Pilot"/>
-        <typeAlias type="lt.psk.mybatis.model.PilotsPlanes" alias="PilotsPlanes"/>
+        <typeAlias type="lt.psk.mybatis.model.PlanesPilots" alias="PlanesPilots"/>
         <typeAlias type="lt.psk.mybatis.model.Plane" alias="Plane"/>
     </typeAliases>
     <environments default="development">
@@ -20,7 +20,7 @@
     <mappers>
         <mapper resource="mybatis.xml/AirportMapper.xml"/>
         <mapper resource="mybatis.xml/PilotMapper.xml"/>
-        <mapper resource="mybatis.xml/PilotsPlanesMapper.xml"/>
+        <mapper resource="mybatis.xml/PlanesPilotsMapper.xml"/>
         <mapper resource="mybatis.xml/PlaneMapper.xml"/>
     </mappers>
 </configuration>

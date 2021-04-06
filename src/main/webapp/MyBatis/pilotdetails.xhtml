@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Piloto valdomi lėktuvai</title>
+</head>
+<h:body>
+    <param name="personId" value="#{planesForPilotMyBatis.pilot.id}" />
+    <h2 align="Center">Piloto valdomi lėktuvai</h2>
+    <ol>
+        <ui:repeat value="#{planesForPilotMyBatis.pilot.planes}" var="plane">
+            <li>
+                #{plane.model}, #{plane.planeNumber}
+            </li>
+        </ui:repeat>
+    </ol>
+    <table align="center">
+        <tr>
+            <td>
+                <h:link outcome="/MyBatis/pilots" value="Grįžti į pilotų sąrašą"/>
+            </td>
+        </tr>
+    </table>
+</h:body>
+</html>

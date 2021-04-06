@@ -13,27 +13,28 @@ import java.util.List;
 
 @Model
 public class AirportsMyBatis {
+
     @Inject
     private AirportMapper airportMapper;
 
-    @Getter
-    private List<Airport> allAirports;
-
     @Getter @Setter
     private Airport airportToCreate = new Airport();
+
+    @Getter
+    private List<Airport> allAirports;
 
     @PostConstruct
     public void init() {
         this.loadAllAirports();
     }
 
-    private void loadAllAirports() {
-        this.allAirports = airportMapper.selectAll();
-    }
-
     @Transactional
     public String createAirport() {
         airportMapper.insert(airportToCreate);
         return "/MyBatis/airports?faces-redirect=true";
+    }
+
+    private void loadAllAirports() {
+        this.allAirports = airportMapper.selectAll();
     }
 }

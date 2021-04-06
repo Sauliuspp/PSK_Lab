@@ -5,7 +5,6 @@ import lombok.Setter;
 import lt.psk.entities.Pilot;
 import lt.psk.entities.Plane;
 import lt.psk.persistence.PilotsDAO;
-import lt.psk.persistence.PlanesDAO;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -14,13 +13,10 @@ import javax.inject.Inject;
 import java.util.Map;
 
 @Model
-public class planesForPilot {
+public class PlanesForPilot {
 
     @Inject
     private PilotsDAO pilotsDAO;
-
-    @Inject
-    private PlanesDAO planesDAO;
 
     @Getter @Setter
     private Pilot pilot;

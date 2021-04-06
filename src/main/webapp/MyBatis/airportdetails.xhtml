@@ -3,16 +3,17 @@
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
 <head>
     <meta charset="UTF-8"/>
     <title>Oro uosto lėktuvai</title>
 </head>
 <h:body>
-    <param name="airportId" value="#{planesForAirport.airport.id}" />
+    <param name="airportId" value="#{planesForAirportMyBatis.airport.id}" />
     <h2 align="Center">Oro uosto lėktuvai</h2>
     <ol>
-        <ui:repeat value="#{planesForAirport.airport.planes}" var="plane">
+        <ui:repeat value="#{planesForAirportMyBatis.airport.planes}" var="plane">
             <li>
                 #{plane.model}, #{plane.planeNumber}
             </li>
@@ -24,12 +25,13 @@
         <h:inputText value="#{planesForAirportMyBatis.planeToCreate.model}" required="true" />
         <p>Lėktuvo numeris</p>
         <h:inputText value="#{planesForAirportMyBatis.planeToCreate.planeNumber}" required="true" />
-        <h:commandButton value="Pridėti naują lėktuvą" action="#{planesForAirportMyBatis.createPlane}">
-            <f:param name="airportId" value="#{planesForAirportMyBatis.airport.id}" />
-        </h:commandButton>
+        <p>
+            <h:commandButton value="Pridėti naują lėktuvą" action="#{planesForAirportMyBatis.createPlane}">
+                <f:param name="airportId" value="#{planesForAirportMyBatis.airport.id}" />
+            </h:commandButton>
+        </p>
     </h:form>
-    <table align="center"
-           cellpadding="50">
+    <table align="center">
         <tr>
             <td>
                 <h:link outcome="/MyBatis/airports" value="Grįžti į oro uostų sąrašą"/>

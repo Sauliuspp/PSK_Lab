@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Lėktuvo pilotai</title>
+</head>
+<h:body>
+    <param name="planeId" value="#{pilotsForPlaneMyBatis.plane.id}" />
+    <h2 align="Center">Lėktuvo pilotai</h2>
+    <ol>
+        <ui:repeat value="#{pilotsForPlaneMyBatis.plane.pilots}" var="pilot">
+            <li>
+                #{pilot.name}, #{pilot.age}, #{pilot.personId}
+            </li>
+        </ui:repeat>
+    </ol>
+
+    <h:form>
+        <h:selectOneMenu value="#{pilotsForPlaneMyBatis.chosenPilotId}">
+            <f:selectItems value="#{pilotsForPlaneMyBatis.getFreePilots()}"
+                           var="pilot"
+                           itemLabel="#{pilot.name}"
+                           itemValue="#{pilot.id}"/>
+        </h:selectOneMenu>
+        <p>
+            <h:commandButton value="Pridėti pilotą" action="#{pilotsForPlaneMyBatis.assignPilot}">
+                <f:param name="planeId" value="#{pilotsForPlaneMyBatis.plane.id}"/>
+            </h:commandButton>
+        </p>
+    </h:form>
+
+    <table align="center">
+        <tr>
+            <td>
+                <h:link outcome="/MyBatis/planes" value="Grįžti į lėktuvų sąrašą"/>
+            </td>
+        </tr>
+    </table>
+</h:body>
+</html>
