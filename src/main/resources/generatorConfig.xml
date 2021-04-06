@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="PSK_database" targetRuntime="MyBatis3Simple">
+        <jdbcConnection driverClass="org.h2.Driver"
+                        connectionURL="jdbc:h2:~/PSK_database;AUTO_SERVER=TRUE"
+                        userId="sa"
+                        password="sa">
+        </jdbcConnection>
+
+
+        <javaModelGenerator
+                targetPackage="lt.psk.mybatis.model"
+                targetProject="MAVEN" />
+        <!-- XML based -->
+        <sqlMapGenerator targetPackage="lt.psk.mybatis.xml"
+                         targetProject="MAVEN" />
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="lt.psk.mybatis.dao"
+                             targetProject="MAVEN" />
+
+
+        <table schema="public" tableName="AIRPORT">
+            <generatedKey column="id" identity="true"
+                          sqlStatement="JDBC" />
+        </table>
+        <table schema="public" tableName="PILOT">
+            <generatedKey column="id" identity="true"
+                          sqlStatement="JDBC" />
+        </table>
+        <table schema="public" tableName="PLANE">
+            <generatedKey column="id" identity="true"
+                          sqlStatement="JDBC" />
+        </table>
+        <table schema="public" tableName="PILOTS_PLANES">
+        </table>
+    </context>
+</generatorConfiguration>
