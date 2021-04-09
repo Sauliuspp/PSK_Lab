@@ -10,6 +10,11 @@
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="AIRPORT_ADDRESS" jdbcType="VARCHAR" property="airportAddress" />
     <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <collection property="planes"
+                javaType="ArrayList"
+                ofType="Plane"
+                column="id"
+                select="selectPlanesForAirport"/>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
@@ -58,5 +63,11 @@
     -->
     select ID, AIRPORT_ADDRESS, NAME
     from PUBLIC.AIRPORT
+  </select>
+  <select id="selectPlanesForAirport" resultType="Plane">
+    SELECT p.ID, p.MODEL, p.PLANE_NUMBER as planeNumber
+    FROM PUBLIC.PLANE p
+      JOIN PUBLIC.AIRPORT a on p.AIRPORT_ID = a.ID
+    WHERE p.AIRPORT_ID = #{id,jdbcType=INTEGER}
   </select>
 </mapper>

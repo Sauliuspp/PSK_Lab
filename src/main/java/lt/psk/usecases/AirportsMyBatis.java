@@ -29,7 +29,7 @@ public class AirportsMyBatis {
     }
 
     @Transactional
-    public String createAirport() {
+    public String createAirport(){
         airportMapper.insert(airportToCreate);
         return "/MyBatis/airports?faces-redirect=true";
     }

@@ -40,7 +40,6 @@ public class PlanesForAirport implements Serializable {
     }
 
     @Transactional
-    @LoggedInvocation
     public String createPlane() {
         planeToCreate.setAirport(this.airport);
         planesDAO.persist(planeToCreate);

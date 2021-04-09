@@ -11,6 +11,9 @@
     <result column="AGE" jdbcType="VARCHAR" property="age" />
     <result column="NAME" jdbcType="VARCHAR" property="name" />
     <result column="PERSON_ID" jdbcType="INTEGER" property="personId" />
+    <collection property="planes" javaType="ArrayList"
+                ofType="Plane" column="id"
+                select="selectPlanesForPilot"/>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
@@ -62,5 +65,11 @@
     -->
     select ID, AGE, NAME, PERSON_ID
     from PUBLIC.PILOT
+  </select>
+  <select id="selectPlanesForPilot" resultType="Plane">
+    SELECT pl.ID, pl.MODEL, pl.PLANE_NUMBER as planeNumber
+    FROM public.PLANE pl
+           JOIN public.PLANES_PILOTS pp on pl.ID = pp.PLANES_ID
+    WHERE pp.PILOTS_ID = #{id,jdbcType=INTEGER}
   </select>
 </mapper>

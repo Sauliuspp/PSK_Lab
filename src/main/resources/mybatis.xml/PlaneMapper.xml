@@ -11,6 +11,11 @@
     <result column="MODEL" jdbcType="VARCHAR" property="model" />
     <result column="PLANE_NUMBER" jdbcType="VARCHAR" property="planeNumber" />
     <result column="AIRPORT_ID" jdbcType="INTEGER" property="airportId" />
+    <association property="airport" columnPrefix="airportId"
+                 resultMap="lt.psk.mybatis.dao.AirportMapper.BaseResultMap"/>
+    <collection property="pilots" javaType="ArrayList"
+                ofType="Pilot" column="id"
+                select="selectPilotsForPlane"/>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
@@ -62,5 +67,11 @@
     -->
     select ID, MODEL, PLANE_NUMBER, AIRPORT_ID
     from PUBLIC.PLANE
+  </select>
+  <select id="selectPilotsForPlane" resultType="Pilot">
+    SELECT pil.NAME, pil.AGE, pil.PERSON_ID as personId
+    FROM public.PILOT pil
+            JOIN public.PLANES_PILOTS pp ON pp.PILOTS_ID = pil.ID
+    WHERE pp.PLANES_ID = #{id, jdbcType=INTEGER}
   </select>
 </mapper>

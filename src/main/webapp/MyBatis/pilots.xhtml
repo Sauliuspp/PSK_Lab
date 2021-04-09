@@ -13,7 +13,7 @@
     <ol>
         <ui:repeat value="#{pilotsMyBatis.allPilots}" var="pilot">
             <li>
-                <h:link value="#{pilot.name}"
+                <h:link value="#{pilot.name}, #{pilot.age}, #{pilot.personId}"
                         outcome="/MyBatis/pilotdetails?personId=#{pilot.id}" />
             </li>
         </ui:repeat>

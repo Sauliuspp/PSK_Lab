@@ -47,7 +47,7 @@ public class PilotsForPlane {
         this.plane = planesDAO.findOne(planeId);
     }
 
-    public List<SelectItem> getFreePilots() {
+    public List<SelectItem> getPilots() {
         List<SelectItem> pilotsForSelection = new ArrayList<>();
         List<Pilot> pilotList = pilotsDAO.loadAll();
         for(Pilot pilot : pilotList) {
