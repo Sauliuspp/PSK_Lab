@@ -49,7 +49,9 @@ public class PilotsForPlane {
 
     public List<SelectItem> getPilots() {
         List<SelectItem> pilotsForSelection = new ArrayList<>();
-        List<Pilot> pilotList = pilotsDAO.loadAll();
+//        List<Pilot> pilotList = pilotsDAO.loadAll();
+        List<Pilot> pilotList = pilotsDAO.loadFilteredPilots(plane.getPilots());
+
         for(Pilot pilot : pilotList) {
             pilotsForSelection.add(new SelectItem(pilot.getId(), pilot.getName()));
         }

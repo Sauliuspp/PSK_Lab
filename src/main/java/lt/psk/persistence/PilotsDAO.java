@@ -22,4 +22,8 @@ public class PilotsDAO {
     public Pilot findOne(Integer personId) {
         return em.find(Pilot.class, personId);
     }
+
+    public List loadFilteredPilots(List<Pilot> pilots) {
+        return em.createNamedQuery("Pilot.loadFilteredPilots").setParameter("pilots", pilots).getResultList();
+    }
 }

@@ -10,7 +10,8 @@ import java.util.List;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Pilot.findAll", query = "select p from Pilot as p")
+        @NamedQuery(name = "Pilot.findAll", query = "select p from Pilot as p"),
+        @NamedQuery(name = "Pilot.loadFilteredPilots", query = "select p from Pilot as p where p not in :pilots")
 })
 @Table(name = "PILOT")
 @Getter @Setter
