@@ -2,6 +2,8 @@ package lt.psk.persistence;
 
 import lt.psk.entities.Airport;
 import lt.psk.entities.Plane;
+import lt.psk.interceptors.JSONInterceptor;
+import lt.psk.interceptors.LoggingInterceptor;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Alternative;
@@ -15,6 +17,7 @@ public class PlanesDAOForTesting implements IPlanesDAO {
 
     private boolean isFilled = false;
     private List<Plane> planes = new ArrayList<>();
+    private int planeId = 4;
 
     @Inject
     private AirportsDAOForTesting airportsDAOForTesting;
@@ -27,6 +30,8 @@ public class PlanesDAOForTesting implements IPlanesDAO {
         return planes;
     }
 
+    @LoggingInterceptor
+    @JSONInterceptor
     public void persist(Plane plane) {
         loadAll();
         List<Airport> airportList = airportsDAOForTesting.loadAll();
@@ -39,6 +44,8 @@ public class PlanesDAOForTesting implements IPlanesDAO {
                 airport.setPlanes(airportPlaneList);
             }
         }
+        plane.setId(planeId);
+        planeId++;
         planes.add(plane);
     }
 

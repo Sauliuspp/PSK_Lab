@@ -1,5 +1,6 @@
 package lt.psk.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = "Plane.findAll", query = "select p from Plane as p")
 })
+@JsonIgnoreProperties({"pilots", "airport"})
 @Table(name = "PLANE")
 @Getter @Setter
 public class Plane implements Serializable {

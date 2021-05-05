@@ -1,5 +1,6 @@
 package lt.psk.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,7 @@ import java.util.List;
         @NamedQuery(name = "Pilot.findAll", query = "select p from Pilot as p"),
         @NamedQuery(name = "Pilot.loadFilteredPilots", query = "select p from Pilot as p where p not in :pilots")
 })
+@JsonIgnoreProperties({"planes"})
 @Table(name = "PILOT")
 @Getter @Setter
 public class Pilot implements Serializable {

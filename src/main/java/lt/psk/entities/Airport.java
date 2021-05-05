@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +13,7 @@ import lombok.Setter;
 @NamedQueries({
         @NamedQuery(name = "Airport.findAll", query = "select a from Airport as a")
 })
+@JsonIgnoreProperties({"planes"})
 @Table(name = "AIRPORT")
 @Getter @Setter
 public class Airport implements Serializable {

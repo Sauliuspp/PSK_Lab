@@ -9,4 +9,8 @@
         <class>lt.psk.persistence.PlanesDAOForTesting</class>
         <class>lt.psk.persistence.PilotsDAOForTesting</class>
     </alternatives>
+    <interceptors>
+        <class>lt.psk.interceptors.MethodLogger</class>
+        <class>lt.psk.interceptors.JSONCreator</class>
+    </interceptors>
 </beans>

@@ -51,7 +51,7 @@ public class AirportsDAOForTesting implements IAirportsDAO {
 
         Airport airport = new Airport();
         airport.setId(1);
-        airport.setName("Lektuvas1");
+        airport.setName("Oro uostas 1");
         airport.setAirportAddress("Vilniaus g.");
         List<Plane> airportsPlaneList = airport.getPlanes();
         airportsPlaneList.add(planeList.get(0));
@@ -61,7 +61,7 @@ public class AirportsDAOForTesting implements IAirportsDAO {
 
         airport = new Airport();
         airport.setId(2);
-        airport.setName("Lektuvas2");
+        airport.setName("Oro uostas 2");
         airport.setAirportAddress("Kauno g.");
         airportsPlaneList = airport.getPlanes();
         airportsPlaneList.add(planeList.get(2));
@@ -70,7 +70,7 @@ public class AirportsDAOForTesting implements IAirportsDAO {
 
         airport = new Airport();
         airport.setId(3);
-        airport.setName("Lektuvas3");
+        airport.setName("Oro uostas 3");
         airport.setAirportAddress("Klaipedos g.");
         airportList.add(airport);
 
