@@ -12,18 +12,17 @@ import lombok.Getter;
 import lombok.Setter;
 import lt.psk.entities.Airport;
 import lt.psk.entities.Plane;
-import lt.psk.interceptors.LoggedInvocation;
-import lt.psk.persistence.AirportsDAO;
-import lt.psk.persistence.PlanesDAO;
+import lt.psk.persistence.IAirportsDAO;
+import lt.psk.persistence.IPlanesDAO;
 
 @Model
 public class PlanesForAirport implements Serializable {
 
     @Inject
-    private AirportsDAO airportsDAO;
+    private IAirportsDAO airportsDAO;
 
     @Inject
-    private PlanesDAO planesDAO;
+    private IPlanesDAO planesDAO;
 
     @Getter @Setter
     private Airport airport;

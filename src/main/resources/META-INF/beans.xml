@@ -4,4 +4,9 @@
        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/beans_2_0.xsd"
        bean-discovery-mode="all">
+    <alternatives>
+        <class>lt.psk.persistence.AirportsDAOForTesting</class>
+        <class>lt.psk.persistence.PlanesDAOForTesting</class>
+        <class>lt.psk.persistence.PilotsDAOForTesting</class>
+    </alternatives>
 </beans>

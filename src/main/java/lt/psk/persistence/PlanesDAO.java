@@ -1,16 +1,14 @@
 package lt.psk.persistence;
 
-import lt.psk.entities.Airport;
 import lt.psk.entities.Plane;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped
-public class PlanesDAO {
+public class PlanesDAO implements IPlanesDAO {
 
     @Inject
     private EntityManager em;

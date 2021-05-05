@@ -3,7 +3,7 @@ package lt.psk.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import lt.psk.entities.Pilot;
-import lt.psk.persistence.PilotsDAO;
+import lt.psk.persistence.IPilotsDAO;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -15,7 +15,7 @@ import java.util.List;
 public class Pilots {
 
     @Inject
-    private PilotsDAO pilotsDAO;
+    private IPilotsDAO pilotsDAO;
 
     @Getter @Setter
     private Pilot pilotToCreate = new Pilot();
@@ -28,13 +28,13 @@ public class Pilots {
         loadAllPilots();
     }
 
-    public void loadAllPilots() {
-        this.allPilots = pilotsDAO.loadAll();
-    }
-
     @Transactional
     public String createPilot() {
         pilotsDAO.persist(pilotToCreate);
         return "pilots?faces-redirect=true";
+    }
+
+    public void loadAllPilots() {
+        this.allPilots = pilotsDAO.loadAll();
     }
 }

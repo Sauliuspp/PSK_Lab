@@ -3,7 +3,7 @@ package lt.psk.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import lt.psk.entities.Airport;
-import lt.psk.persistence.AirportsDAO;
+import lt.psk.persistence.IAirportsDAO;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -15,7 +15,7 @@ import java.util.List;
 public class Airports {
 
     @Inject
-    private AirportsDAO airportsDAO;
+    private IAirportsDAO airportsDAO;
 
     @Getter @Setter
     private Airport airportToCreate = new Airport();

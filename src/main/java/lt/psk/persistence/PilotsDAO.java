@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 @ApplicationScoped
-public class PilotsDAO {
+public class PilotsDAO implements IPilotsDAO {
 
     @Inject
     private EntityManager em;

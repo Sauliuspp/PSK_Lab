@@ -3,7 +3,7 @@ package lt.psk.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import lt.psk.entities.Plane;
-import lt.psk.persistence.PlanesDAO;
+import lt.psk.persistence.IPlanesDAO;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -15,7 +15,7 @@ import java.util.List;
 public class Planes {
 
     @Inject
-    private PlanesDAO planesDAO;
+    private IPlanesDAO planesDAO;
 
     @Getter @Setter
     private Plane planeToCreate = new Plane();
