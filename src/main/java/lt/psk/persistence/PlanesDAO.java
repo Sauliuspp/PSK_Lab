@@ -1,6 +1,8 @@
 package lt.psk.persistence;
 
 import lt.psk.entities.Plane;
+import lt.psk.interceptors.JSONInterceptor;
+import lt.psk.interceptors.LoggingInterceptor;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -13,6 +15,8 @@ public class PlanesDAO implements IPlanesDAO {
     @Inject
     private EntityManager em;
 
+    @LoggingInterceptor
+    @JSONInterceptor
     public void persist(Plane plane){
         this.em.persist(plane);
     }

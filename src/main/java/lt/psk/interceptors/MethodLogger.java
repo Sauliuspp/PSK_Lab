@@ -23,7 +23,7 @@ public class MethodLogger {
         }
         String className = ctx.getTarget().getClass().getSuperclass().getName();
         String methodName = ctx.getMethod().getName();
-        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd HH.mm.ss").format(new java.util.Date());
 
         try (FileWriter writer = new FileWriter(loggingFile, true)) {
             writer.write("Class name: " + className + "\n");

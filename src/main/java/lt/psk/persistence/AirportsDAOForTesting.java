@@ -17,7 +17,7 @@ public class AirportsDAOForTesting implements IAirportsDAO {
     private List<Airport> airports = new ArrayList<>();
 
     @Inject
-    private PlanesDAOForTesting planesDAOForTesting;
+    private IPlanesDAO planesDAOForTesting;
 
     public List<Airport> loadAll() {
         if(!isFilled) {
@@ -41,12 +41,6 @@ public class AirportsDAOForTesting implements IAirportsDAO {
     }
 
     private void fillList() {
-        List<Airport> ap = createAirports();
-        airports.addAll(ap);
-    }
-
-    private List<Airport> createAirports() {
-        List<Airport> airportList = new ArrayList<>();
         List<Plane> planeList = planesDAOForTesting.loadAll();
 
         Airport airport = new Airport();
@@ -57,7 +51,7 @@ public class AirportsDAOForTesting implements IAirportsDAO {
         airportsPlaneList.add(planeList.get(0));
         airportsPlaneList.add(planeList.get(1));
         airport.setPlanes(airportsPlaneList);
-        airportList.add(airport);
+        persist(airport);
 
         airport = new Airport();
         airport.setId(2);
@@ -66,14 +60,12 @@ public class AirportsDAOForTesting implements IAirportsDAO {
         airportsPlaneList = airport.getPlanes();
         airportsPlaneList.add(planeList.get(2));
         airport.setPlanes(airportsPlaneList);
-        airportList.add(airport);
+        persist(airport);
 
         airport = new Airport();
         airport.setId(3);
         airport.setName("Oro uostas 3");
-        airport.setAirportAddress("Klaipedos g.");
-        airportList.add(airport);
-
-        return airportList;
+        airport.setAirportAddress("Klaipėdos g.");
+        persist(airport);
     }
 }

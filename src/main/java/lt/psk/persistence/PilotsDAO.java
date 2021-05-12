@@ -1,6 +1,8 @@
 package lt.psk.persistence;
 
 import lt.psk.entities.Pilot;
+import lt.psk.qualifiers.Standard;
+import lt.psk.usecases.ValidNameChecker;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -10,6 +12,9 @@ import java.util.List;
 @ApplicationScoped
 public class PilotsDAO implements IPilotsDAO {
 
+    @Inject @Standard
+    private ValidNameChecker validNameChecker;
+
     @Inject
     private EntityManager em;
 
@@ -17,7 +22,11 @@ public class PilotsDAO implements IPilotsDAO {
         return em.createNamedQuery("Pilot.findAll", Pilot.class).getResultList();
     }
 
-    public void persist(Pilot pilot) {this.em.persist(pilot);}
+    public void persist(Pilot pilot) {
+        if (validNameChecker.isValidName(pilot.getName())) {
+            this.em.persist(pilot);
+        }
+    }
 
     public Pilot findOne(Integer personId) {
         return em.find(Pilot.class, personId);

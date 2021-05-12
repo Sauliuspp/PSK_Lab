@@ -13,4 +13,7 @@
         <class>lt.psk.interceptors.MethodLogger</class>
         <class>lt.psk.interceptors.JSONCreator</class>
     </interceptors>
+    <decorators>
+        <class>lt.psk.decorators.EncodingDecorator</class>
+    </decorators>
 </beans>
