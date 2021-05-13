@@ -50,8 +50,8 @@ public class AirportController {
                 return Response.status(Response.Status.NOT_FOUND).build();
             }
 
-            airport.setName(airportData.getName());
-            airport.setAirportAddress(airportData.getAirportAddress());
+            if (airportData.getName() != null) airport.setName(airportData.getName());
+            if (airportData.getAirportAddress() != null) airport.setAirportAddress(airportData.getAirportAddress());
 
             airportsDAO.update(airport);
             return Response.ok().build();

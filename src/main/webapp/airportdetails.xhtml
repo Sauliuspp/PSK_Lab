@@ -4,10 +4,27 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a="http://java.sun.com/jsf/facelets">
 <head>
     <meta charset="UTF-8"/>
     <title>Oro uosto lėktuvai</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 300px; /* Should be removed. Only for demonstration */
+        }
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
 </head>
 <h:body>
     <param name="airportId" value="#{planesForAirport.airport.id}" />
@@ -19,18 +36,35 @@
             </li>
         </ui:repeat>
     </ol>
-    <h:form>
-        <h3>Pridėti lėktuvą</h3>
-        <p>Lėktuvo modelis</p>
-        <h:inputText value="#{planesForAirport.planeToCreate.model}" required="true" />
-        <p>Lėktuvo numeris</p>
-        <h:inputText value="#{planesForAirport.planeToCreate.planeNumber}" required="true" />
-        <p>
-            <h:commandButton value="Pridėti naują lėktuvą" action="#{planesForAirport.createPlane}">
-                <f:param name="airportId" value="#{planesForAirport.airport.id}" />
-            </h:commandButton>
-        </p>
-    </h:form>
+    <div class="row">
+        <div class="column">
+            <h:form>
+                <h3>Pridėti lėktuvą</h3>
+                <p>Lėktuvo modelis</p>
+                <h:inputText value="#{planesForAirport.planeToCreate.model}" required="true" />
+                <p>Lėktuvo numeris</p>
+                <h:inputText value="#{planesForAirport.planeToCreate.planeNumber}" required="true" />
+                <p>
+                    <h:commandButton value="Pridėti naują lėktuvą" action="#{planesForAirport.createPlane}">
+                        <f:param name="airportId" value="#{planesForAirport.airport.id}" />
+                    </h:commandButton>
+                </p>
+            </h:form>
+        </div>
+        <div class="column">
+            <h:form>
+                <h3>Pakeisti oro uosto pavadinimą</h3>
+                <p>Dabartinis pavadinimas: #{planesForAirport.airport.name}</p>
+                <h:inputText value="#{updateAirportDetails.airport.name}" required="true" a:placeholder="Pavadinimas"/>
+                <p>
+                    <h:commandButton value="Pakeisti oro uosto pavadinimą" action="#{updateAirportDetails.updateAirportName()}">
+                        <f:param name="airportId" value="#{updateAirportDetails.airport.id}" />
+                    </h:commandButton>
+                </p>
+                <h:outputText value="Optimistic lock exception thrown - try again" rendered="#{param['error'] == 'optimistic-lock-exception'}" />
+            </h:form>
+        </div>
+    </div>
     <table align="center">
         <tr>
             <td>
