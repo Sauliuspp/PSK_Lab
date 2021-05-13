@@ -12,7 +12,6 @@ import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
 
 @ApplicationScoped
 @Path("/airport")
@@ -43,13 +42,14 @@ public class AirportController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
     public Response update(
-            @PathParam("airportId") final Integer airportId,
+            @PathParam("airportId") final int airportId,
             AirportDTO airportData) {
         try {
             Airport airport = airportsDAO.findOne(airportId);
             if (airport == null) {
                 return Response.status(Response.Status.NOT_FOUND).build();
             }
+
             airport.setName(airportData.getName());
             airport.setAirportAddress(airportData.getAirportAddress());
 

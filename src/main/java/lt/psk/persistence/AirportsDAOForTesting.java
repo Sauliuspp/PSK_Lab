@@ -40,6 +40,13 @@ public class AirportsDAOForTesting implements IAirportsDAO {
         return null;
     }
 
+    public Airport update(Airport airp) {
+        Airport airport = findOne(airp.getId());
+        airport.setName(airp.getName());
+        airport.setAirportAddress(airp.getAirportAddress());
+        return airport;
+    }
+
     private void fillList() {
         List<Plane> planeList = planesDAOForTesting.loadAll();
 

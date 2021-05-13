@@ -10,4 +10,6 @@ public interface IAirportsDAO {
     void persist(Airport airport);
 
     Airport findOne(Integer id);
+
+    Airport update(Airport player);
 }

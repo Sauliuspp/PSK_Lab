@@ -11,7 +11,7 @@ import lombok.Setter;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Airport.findAll", query = "select a from Airport as a")
+        @NamedQuery(name = "Airport.findAll", query = "select a from Airport as a order by a.Id asc")
 })
 @JsonIgnoreProperties({"planes"})
 @Table(name = "AIRPORT")

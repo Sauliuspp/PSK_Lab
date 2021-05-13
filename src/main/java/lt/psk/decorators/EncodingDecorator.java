@@ -32,15 +32,8 @@ public abstract class EncodingDecorator implements IAirportsDAO {
             List<Plane> planes = airport.getPlanes();
 
             try {
-                byte[] decodedName = Base64.
-                        getDecoder().
-                        decode(name);
-                String decodedNameToString = new String(decodedName, StandardCharsets.UTF_16);
-
-                byte[] decodedAddress = Base64.
-                        getDecoder().
-                        decode(airportAddress);
-                String decodedAddressToString = new String(decodedAddress, StandardCharsets.UTF_16);
+                String decodedNameToString = decodeString(name);
+                String decodedAddressToString = decodeString(airportAddress);
 
                 Airport decodedAirport = new Airport();
                 setFields(decodedAirport, id, decodedNameToString, decodedAddressToString, planes);
@@ -56,6 +49,69 @@ public abstract class EncodingDecorator implements IAirportsDAO {
             }
         }
         return decodedAirports;
+    }
+
+    public Airport findOne(Integer id) {
+        Airport decodedAirport = new Airport();
+        try {
+            Airport airport = airportsDAO.findOne(id);
+            String name = airport.getName();
+            String airportAddress = airport.getAirportAddress();
+            List<Plane> planes = airport.getPlanes();
+
+            try {
+                String decodedNameToString = decodeString(name);
+                String decodedAddressToString = decodeString(airportAddress);
+
+                setFields(decodedAirport, id, decodedNameToString, decodedAddressToString, planes);
+                return decodedAirport;
+
+            } catch (IllegalArgumentException e) {
+                setFields(decodedAirport, id, name, airportAddress, planes);
+                return decodedAirport;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Airport update(Airport airp) {
+        Airport decodedAirport = new Airport();
+
+        try {
+            int id = airp.getId();
+            String name = airp.getName();
+            String airportAddress = airp.getAirportAddress();
+            List<Plane> planes = airp.getPlanes();
+
+            try {
+                String encodedName = Base64.
+                        getEncoder().
+                        encodeToString(name.getBytes(StandardCharsets.UTF_16));
+                String encodedAirportAddress = Base64.
+                        getEncoder().
+                        encodeToString(airportAddress.getBytes(StandardCharsets.UTF_16));
+
+                setFields(decodedAirport, id, encodedName, encodedAirportAddress, planes);
+                return airportsDAO.update(decodedAirport);
+
+            } catch (IllegalArgumentException e) {
+                setFields(decodedAirport, id, name, airportAddress, planes);
+                return decodedAirport;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public void persist(Airport airport) {
@@ -82,5 +138,12 @@ public abstract class EncodingDecorator implements IAirportsDAO {
         airport.setName(name);
         airport.setAirportAddress(address);
         airport.setPlanes(planes);
+    }
+
+    private String decodeString(String str) {
+        byte[] decodedName = Base64.
+                getDecoder().
+                decode(str);
+        return new String(decodedName, StandardCharsets.UTF_16);
     }
 }
