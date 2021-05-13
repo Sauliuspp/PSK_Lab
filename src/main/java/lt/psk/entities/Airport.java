@@ -24,11 +24,14 @@ public class Airport implements Serializable {
     @Column(name="NAME")
     private String name;
 
-    @Column(name="AIRPORT_ADDRESS", nullable = false)
+    @Column(name="AIRPORT_ADDRESS")
     private String airportAddress;
 
     @OneToMany(mappedBy = "airport")
     private List<Plane> planes = new ArrayList<>();
+
+    @Version
+    private Integer version;
 
     public Airport() { }
 }

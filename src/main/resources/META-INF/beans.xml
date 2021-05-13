@@ -14,6 +14,6 @@
         <class>lt.psk.interceptors.JSONCreator</class>
     </interceptors>
     <decorators>
-        <class>lt.psk.decorators.EncodingDecorator</class>
+        <class>lt.psk.decorators.PlaneDecorator</class>
     </decorators>
 </beans>

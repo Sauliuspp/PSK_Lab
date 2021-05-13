@@ -25,7 +25,7 @@ public class AirportsDAO implements IAirportsDAO {
         return em.find(Airport.class, id);
     }
 
-    public Airport update(Airport player){
-        return em.merge(player);
+    public Airport update(Airport airport){
+        return em.merge(airport);
     }
 }

@@ -11,5 +11,5 @@ public interface IAirportsDAO {
 
     Airport findOne(Integer id);
 
-    Airport update(Airport player);
+    Airport update(Airport airport);
 }
