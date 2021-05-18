@@ -5,12 +5,13 @@ import java.io.Serializable;
 import java.util.Random;
 
 @ApplicationScoped
-public class PersonIdGenerator implements Serializable {
+public class PersonIdGenerator implements Serializable, INumberGenerator {
     public Integer generatePersonId() {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
+
         }
-        return new Random().nextInt(654321);
+        return new Random().nextInt(9000) + 1000;
     }
 }

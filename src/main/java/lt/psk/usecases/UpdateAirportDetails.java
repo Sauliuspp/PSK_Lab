@@ -36,10 +36,9 @@ public class UpdateAirportDetails implements Serializable {
     @Transactional
     public String updateAirportName() {
         try{
-            Thread.sleep(5000);
             airportsDAO.update(this.airport);
-            airportsDAO.flush();
-        } catch (OptimisticLockException | InterruptedException e) {
+        } catch (OptimisticLockException
+                e) {
             return "/airportdetails.xhtml?faces-redirect=true&airportId=" + this.airport.getId() + "&error=optimistic-lock-exception";
         }
         return "airports.xhtml?faces-redirect=true";

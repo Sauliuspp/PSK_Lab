@@ -36,8 +36,8 @@ public class GeneratePersonId implements Serializable {
         if (generatePersonIdTask == null) {
             return null;
         } else if (isPersonIdGeneratorRunning()) {
-            return "Person Id is being generated.";
+            return "Piloto ID generuojamas.";
         }
-        return "Generated person Id: " + generatePersonIdTask.get();
+        return "Sugeneruotas piloto ID: " + generatePersonIdTask.get();
     }
 }

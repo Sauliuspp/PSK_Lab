@@ -40,16 +40,16 @@
         </div>
         <div class="column">
             <h:form>
-                <h3>Asmens kodo keitimas</h3>
-                <p>Dabartinis asmens kodas: #{planesForPilot.pilot.id}</p>
+                <h3>Piloto ID keitimas</h3>
+                <p>Dabartinis piloto ID: #{planesForPilot.pilot.personId}</p>
                 <h:inputText value="#{updatePilotDetails.pilot.personId}" required="true" />
                 <p>
-                    <h:commandButton value="Pakeisti asmens kodą" action="#{updatePilotDetails.updatePersonId()}">
+                    <h:commandButton value="Pakeisti piloto ID" action="#{updatePilotDetails.updatePersonId()}">
                         <f:param name="personId" value="#{updatePilotDetails.pilot.id}" />
                     </h:commandButton>
                 </p>
                 <h:outputText value="#{generatePersonId.personIdGeneratorStatus}" />
-                <h:commandButton value="Generate player number?"
+                <h:commandButton value="Sugeneruoti piloto ID"
                                  disabled="#{generatePersonId.personIdGeneratorRunning}"
                                  action="#{generatePersonId.generateNewPersonId()}">
                     <f:param name="personId" value="#{planesForPilot.pilot.id}" />
