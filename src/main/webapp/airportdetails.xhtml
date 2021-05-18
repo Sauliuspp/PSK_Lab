@@ -61,7 +61,8 @@
                         <f:param name="airportId" value="#{updateAirportDetails.airport.id}" />
                     </h:commandButton>
                 </p>
-                <h:outputText value="Optimistic lock exception thrown - try again" rendered="#{param['error'] == 'optimistic-lock-exception'}" />
+                <h:outputText value="Lėktuvo pavadinimas buvo pakeistas kito naudotojo.&lt;br /&gt;
+                Bandykite dar kartą." rendered="#{param['error'] == 'optimistic-lock-exception'}" escape="false" />
             </h:form>
         </div>
     </div>

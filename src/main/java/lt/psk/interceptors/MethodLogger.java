@@ -11,6 +11,9 @@ import java.text.SimpleDateFormat;
 public class MethodLogger {
     @AroundInvoke
     public Object logMethod(InvocationContext ctx) throws Exception {
+
+        System.out.println("MethodLogger called.");
+
         String fileName = "C:\\Users\\Saulius\\IdeaProjects\\PSK_Lab\\src\\main\\java\\lt\\psk\\interceptors\\MethodLogs.txt";
         File loggingFile = new File(fileName);
 

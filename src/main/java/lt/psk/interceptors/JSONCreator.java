@@ -15,6 +15,8 @@ public class JSONCreator {
     @AroundInvoke
     public Object createJSON(InvocationContext ctx) throws Exception {
 
+        System.out.println("JSONCreator called.");
+
         Object obj = ctx.proceed();
 
         String fileName = "C:\\Users\\Saulius\\IdeaProjects\\PSK_Lab\\src\\main\\java\\lt\\psk\\interceptors\\JSON_file.json";

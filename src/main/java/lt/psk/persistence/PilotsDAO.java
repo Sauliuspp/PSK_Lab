@@ -1,5 +1,6 @@
 package lt.psk.persistence;
 
+import lt.psk.entities.Airport;
 import lt.psk.entities.Pilot;
 import lt.psk.qualifiers.Standard;
 import lt.psk.usecases.ValidNameChecker;
@@ -34,5 +35,9 @@ public class PilotsDAO implements IPilotsDAO {
 
     public List loadFilteredPilots(List<Pilot> pilots) {
         return em.createNamedQuery("Pilot.loadFilteredPilots").setParameter("pilots", pilots).getResultList();
+    }
+
+    public Pilot update(Pilot pilot){
+        return em.merge(pilot);
     }
 }

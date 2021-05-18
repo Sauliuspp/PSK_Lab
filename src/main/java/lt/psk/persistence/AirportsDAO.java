@@ -28,4 +28,8 @@ public class AirportsDAO implements IAirportsDAO {
     public Airport update(Airport airport){
         return em.merge(airport);
     }
+
+    public void flush() {
+        em.flush();
+    }
 }

@@ -3,21 +3,60 @@
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
 <head>
     <meta charset="UTF-8"/>
     <title>Piloto valdomi lėktuvai</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 300px; /* Should be removed. Only for demonstration */
+        }
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
 </head>
 <h:body>
     <param name="personId" value="#{planesForPilot.pilot.id}" />
     <h2 align="Center">Piloto valdomi lėktuvai</h2>
-    <ol>
-        <ui:repeat value="#{planesForPilot.pilot.planes}" var="plane">
-            <li>
-                #{plane.model}, #{plane.planeNumber}
-            </li>
-        </ui:repeat>
-    </ol>
+    <div class="row">
+        <div class="column">
+            <ol>
+                <ui:repeat value="#{planesForPilot.pilot.planes}" var="plane">
+                    <li>
+                        #{plane.model}, #{plane.planeNumber}
+                    </li>
+                </ui:repeat>
+            </ol>
+        </div>
+        <div class="column">
+            <h:form>
+                <h3>Asmens kodo keitimas</h3>
+                <p>Dabartinis asmens kodas: #{planesForPilot.pilot.id}</p>
+                <h:inputText value="#{updatePilotDetails.pilot.personId}" required="true" />
+                <p>
+                    <h:commandButton value="Pakeisti asmens kodą" action="#{updatePilotDetails.updatePersonId()}">
+                        <f:param name="personId" value="#{updatePilotDetails.pilot.id}" />
+                    </h:commandButton>
+                </p>
+                <h:outputText value="#{generatePersonId.personIdGeneratorStatus}" />
+                <h:commandButton value="Generate player number?"
+                                 disabled="#{generatePersonId.personIdGeneratorRunning}"
+                                 action="#{generatePersonId.generateNewPersonId()}">
+                    <f:param name="personId" value="#{planesForPilot.pilot.id}" />
+                </h:commandButton>
+            </h:form>
+        </div>
+    </div>
     <table align="center">
         <tr>
             <td>

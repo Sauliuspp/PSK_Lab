@@ -18,7 +18,7 @@ import java.util.Map;
 @ViewScoped
 @Named
 @Getter @Setter
-public class updateAirportDetails implements Serializable {
+public class UpdateAirportDetails implements Serializable {
 
     private Airport airport;
 
@@ -36,8 +36,10 @@ public class updateAirportDetails implements Serializable {
     @Transactional
     public String updateAirportName() {
         try{
+            Thread.sleep(5000);
             airportsDAO.update(this.airport);
-        } catch (OptimisticLockException e) {
+            airportsDAO.flush();
+        } catch (OptimisticLockException | InterruptedException e) {
             return "/airportdetails.xhtml?faces-redirect=true&airportId=" + this.airport.getId() + "&error=optimistic-lock-exception";
         }
         return "airports.xhtml?faces-redirect=true";
